@@ -19,7 +19,7 @@ namespace AdventOfCode2024
         {
             Console.WriteLine("This is day1part1");
 
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "InputDay1.txt");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "inputs/InputDay1.txt");
             List<string> lines = FileReader.ReadFile(path);
 
             int[] arrLeft = new int[lines.Count];
