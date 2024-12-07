@@ -57,5 +57,49 @@ namespace AdventOfCode2024
 
             Console.WriteLine($"Total distance is {totalDistance}");
         }
+
+        public void Day1Part2()
+        {
+            Console.WriteLine("This is day1part2");
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "InputDay1.txt");
+            List<string> lines = FileReader.ReadFile(path);
+
+            int[] arrLeft = new int[lines.Count];
+            int[] arrRight = new int[lines.Count];
+
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                arrLeft[i] = int.Parse(lines[i].Substring(0, 5));
+                arrRight[i] = int.Parse(lines[i].Substring(8, 5));
+            }
+
+            Dictionary<int, int> rightList = new Dictionary<int, int>();
+
+            for (int i = 0; i < arrRight.Length; i++) 
+            {
+                if (!rightList.ContainsKey(arrRight[i]))
+                {
+                    rightList.Add(arrRight[i], 1);
+                } else
+                {
+                    rightList[arrRight[i]]++;
+                }
+            }
+
+            int totalSimilarityScore = 0;
+
+            for (int i = 0; i < arrLeft.Length; i++) 
+            {
+                if (rightList.ContainsKey(arrLeft[i]))
+                {
+                    totalSimilarityScore += arrLeft[i] * rightList[arrLeft[i]];
+                }
+            }
+
+            Console.WriteLine($"Total Similarity Score is {totalSimilarityScore}");
+
+        }
     }
 }
